@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnCoroutineScope" />
 
     <Button
-        android:id="@+id/btnAwait"
+        android:id="@+id/btnAwaitAndAsync"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/btn_color"
@@ -41,17 +41,6 @@
         app:layout_constraintTop_toBottomOf="@id/btnSuspendFunctions" />
 
     <Button
-        android:id="@+id/btnAsync"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_color"
-        android:text="@string/async"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAwait" />
-
-    <Button
         android:id="@+id/btnJobs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +49,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAsync" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAwaitAndAsync" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gTop"

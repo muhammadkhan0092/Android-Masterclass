@@ -17,6 +17,7 @@ class CoroutinesFragment : Fragment(){
     private var binding : CoroutinesFragmentBinding? = null
     companion object{
         const val COROUTINE_SCOPE = "COROUTINE SCOPE"
+        const val SUSPEND_FUNCTION = "SUSPEND FUNCTION"
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +31,50 @@ class CoroutinesFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onCoroutineScopeClicked()
+        onSuspendFunctionClicked()
+    }
+
+    private fun onSuspendFunctionClicked() {
+        /*
+        Coroutines work well with suspend functions.
+        When a coroutine calls a suspend function and reaches a suspension point (e.g., delay, network call),
+        the thread is released and can run other coroutines until they also reach a suspension point.
+        When the first coroutine’s suspension is over, it resumes execution on an available thread (not necessarily the same one).
+        This allows coroutines to cooperate, ensuring that threads are not left idle while waiting.
+        The logs below illustrate how these coroutines interleave and work together.
+        */
+
+        binding?.btnSuspendFunctions?.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch{
+                suspendSimulationOne()
+            }
+            CoroutineScope(Dispatchers.IO).launch{
+                suspendSimulationTwo()
+            }
+        }
+    }
+
+    private suspend fun suspendSimulationOne(){
+        delay(1000)
+        Log.d(SUSPEND_FUNCTION,"SF-1 LOG-1")
+        delay(1000)
+        Log.d(SUSPEND_FUNCTION,"SF-1 LOG-2")
+        delay(1000)
+        Log.d(SUSPEND_FUNCTION,"SF-1 LOG-3")
+        delay(6000)
+        Log.d(SUSPEND_FUNCTION,"SF-1 LOG-4")
+    }
+
+    private suspend fun suspendSimulationTwo(){
+        delay(500)
+        Log.d(SUSPEND_FUNCTION,"SF-2 LOG-1")
+        delay(3000)
+        Log.d(SUSPEND_FUNCTION,"SF-2 LOG-2")
+        delay(1000)
+        Log.d(SUSPEND_FUNCTION,"SF-2 LOG-3")
+        delay(1000)
+        Log.d(SUSPEND_FUNCTION,"SF-2 LOG-4")
+
     }
 
     private fun onCoroutineScopeClicked() {
@@ -45,14 +90,12 @@ class CoroutinesFragment : Fragment(){
          UI FREEZE IF THE CODE IS BLOCKED FOR A FEW SECONDS
          THE NON BLOCKING NATURE CAN BE OBSERVED IN THE LOGS
          MOREOVER OUR APPLICATION HAS ONE MAIN THREAD SO IF WE WOULD HAVE RUN
-         THIS IN OUR MAIN THREAD AGAIN OUR APP WOULD BE FREEZED.
-         BUT IN OUR CASE BECAUSE WE USE IO THREAD, IT IS LETTING THE MAIN THREAD FREE WHICH CAN PERFORM OTHERS
-         TASKS
+         THIS IN OUR MAIN THREAD AGAIN OUR APP WOULD BE FREEZED BECAUSE HEAVY TASKS ARE NOT GOOD AT MAIN THREAD
          MAIN -> UI TASKS
          IO -> READING WRITING FROM FILES , API ,DATABASE WORK
          DEFAULT -> CPU PROCESSING LIKE COMPLEX CALCULATIONS
         * */
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.Main).launch{
             var count = 0
             while (count<11){
                 for (i in 1..1000000000){
