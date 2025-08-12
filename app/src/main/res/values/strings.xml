@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android Masterclass</string>
+    <string name="search_concept_by_name">Search Concept By Name</string>
+    <string name="coroutines">Coroutines</string>
+    <string name="coroutine_jobs">Coroutine Jobs</string>
+    <string name="async">Async</string>
+    <string name="await">await</string>
+    <string name="suspend_functions">Suspend Functions</string>
+    <string name="coroutine_scope">Coroutine Scope</string>
+</resources>
