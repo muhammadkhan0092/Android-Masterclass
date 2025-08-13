@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.androidmasterclass.databinding.CoroutinesFragmentBinding
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -16,6 +17,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class CoroutinesFragment : Fragment(){
     private var binding : CoroutinesFragmentBinding? = null
@@ -24,6 +27,8 @@ class CoroutinesFragment : Fragment(){
         const val SUSPEND_FUNCTION = "SUSPEND FUNCTION"
         const val ASYNC_AWAIT = "ASYNC_AWAIT"
         const val JOB = "JOB"
+        const val RUN_BLOCKING_AND_RUN_WITH = "RUN_BLOCKING_AND_RUN_WITH"
+        const val LIFECYCLE_SCOPE = "LIFECYCLE SCOPE"
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +45,65 @@ class CoroutinesFragment : Fragment(){
         onSuspendFunctionClicked()
         onAsyncAwaitClicked()
         onCoroutineJobsClicked()
+        onRunWithAndRunBlockingClicked()
+        onLifeCycleClickedListener()
+    }
+
+    private fun onLifeCycleClickedListener() {
+        binding?.btnLifeCycleScope?.setOnClickListener {
+            simulateLifeCycleScope()
+        }
+    }
+    private fun simulateLifeCycleScope() {
+        //lifecycle scope is tied to component (fragment,activity) and viewmodel scope is tied to lifecycle of view mode
+        // which means when the viewmodel is destroyed ,the coroutine is also destroyed
+        //In this Example When the fragment is destroyed the logs of coroutine scope are visible but lifecycle scope logs are not visible as
+        // lifecycle scope is tied to the lifecycle of the fragment here
+        CoroutineScope(Dispatchers.IO).launch{
+            delay(5000)
+            Log.d(LIFECYCLE_SCOPE,"IN COROUTINE SCOPE")
+        }
+
+        lifecycleScope.launch {
+            delay(1000)
+            findNavController().navigateUp()
+            delay(2000)
+            Log.d(LIFECYCLE_SCOPE,"IN LIFECYCLE SCOPE")
+        }
+    }
+
+
+
+    private fun onRunWithAndRunBlockingClicked() {
+        binding?.btnWithContextAndRunBlocking?.setOnClickListener {
+            lifecycleScope.launch {
+                simulateRunBlockingAndWithContext()
+            }
+        }
+    }
+    private suspend fun simulateRunBlockingAndWithContext() {
+        //Run With is used when we Are in A coroutine and want to switch thread to perform some operation in another thread
+        //Run With is Also Blocking in nature which means the last log of this coroutine wont execute until with context is finished
+        val job = CoroutineScope(Dispatchers.IO).launch{
+            Log.d(RUN_BLOCKING_AND_RUN_WITH,"RUNNING HEAVY IO OPERATIONS ON ${coroutineContext}")
+            delay(1000)
+            withContext(Dispatchers.Main){
+                Log.d(RUN_BLOCKING_AND_RUN_WITH,"UPADTING UI ON ${coroutineContext}")
+            }
+            Log.d(RUN_BLOCKING_AND_RUN_WITH,"COROUTINE COMPLETED")
+        }
+        job.join()
+
+        //It Blocks the thread. So The Coroutine is Guranteed to Complete other wise if we use coroutine here and write
+        //cancel just after it only hello will be executed and world will not be executed
+        runBlocking{
+            launch {
+                delay(2000)
+                Log.d(RUN_BLOCKING_AND_RUN_WITH,"WORLD")
+            }
+            Log.d(RUN_BLOCKING_AND_RUN_WITH,"HELLO")
+        }
+
     }
 
     private fun onCoroutineJobsClicked() {
@@ -49,8 +113,8 @@ class CoroutinesFragment : Fragment(){
             }
         }
     }
-
     private suspend fun simulateJobAndCancel(){
+        //cancellation is required to avoid resource wastage and leaks
         val parentJob = CoroutineScope(Dispatchers.IO).launch{
             //even if we cancel the coroutine it will run for some time if the thread is busy and do not check. so we have to manually check it
             if(isActive) {
@@ -76,6 +140,8 @@ class CoroutinesFragment : Fragment(){
         parentJob.join()
         Log.d(JOB,"PARENT JOB COMPLETED")
     }
+
+
     private fun onAsyncAwaitClicked() {
         binding?.btnAwaitAndAsync?.setOnClickListener {
             // We Used Coroutine here also because Suspend Functions Can Only be Called from Suspend functions or coroutine
@@ -193,6 +259,7 @@ class CoroutinesFragment : Fragment(){
 
     override fun onDestroy() {
         binding = null
+        Log.d(LIFECYCLE_SCOPE,"ON DESTROY")
         super.onDestroy()
     }
 }

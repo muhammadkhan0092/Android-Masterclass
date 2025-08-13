@@ -8,4 +8,6 @@
     <string name="suspend_functions">Suspend Functions</string>
     <string name="coroutine_scope">Coroutine Scope</string>
     <string name="async_await">Async Await</string>
+    <string name="runWithAndBlocking">Run With And Blocking</string>
+    <string name="lifecycle_scope">Lifecycle Scope</string>
 </resources>
