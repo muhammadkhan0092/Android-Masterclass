@@ -7,4 +7,5 @@
     <string name="await">await</string>
     <string name="suspend_functions">Suspend Functions</string>
     <string name="coroutine_scope">Coroutine Scope</string>
+    <string name="async_await">Async Await</string>
 </resources>

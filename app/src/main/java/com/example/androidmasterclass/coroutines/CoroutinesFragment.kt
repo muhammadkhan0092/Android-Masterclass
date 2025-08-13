@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.androidmasterclass.databinding.CoroutinesFragmentBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -18,6 +20,7 @@ class CoroutinesFragment : Fragment(){
     companion object{
         const val COROUTINE_SCOPE = "COROUTINE SCOPE"
         const val SUSPEND_FUNCTION = "SUSPEND FUNCTION"
+        const val ASYNC_AWAIT = "ASYNC_AWAIT"
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +35,51 @@ class CoroutinesFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         onCoroutineScopeClicked()
         onSuspendFunctionClicked()
+        onAsyncAwaitClicked()
     }
+
+    private fun onAsyncAwaitClicked() {
+        binding?.btnAwaitAndAsync?.setOnClickListener {
+            // We Used Coroutine here also because Suspend Functions Can Only be Called from Suspend functions or coroutine
+            //lifecyclescope gives us a coroutine which is tied to our activity/fragments life cycle, the coroutine gets cancelled when the component
+            //(activity/fragment) is destroyed
+            lifecycleScope.launch {
+                asyncAwaitSimulation()
+            }
+        }
+    }
+    private suspend fun asyncAwaitSimulation(){
+        //we use async and await when we are expecting a result from the coroutine . It returns us a deffered object which means this is the object
+        //which will have the data you want , but it is deferred/late. we use await which helps to hold the program untill the data is received
+        val jobOne = CoroutineScope(Dispatchers.IO).async {
+            getComputerScienceStudent()
+        }
+
+        val jobTwo = CoroutineScope(Dispatchers.IO).async {
+            getMechanicalStudent()
+        }
+        //The Program Waits untill both jobs are done
+        Log.d(ASYNC_AWAIT,"Computer Science ${jobOne.await()}  Mechanical -> ${jobTwo.await()}")
+        Log.d(ASYNC_AWAIT,"Async Task Completed")
+
+
+        //Same Result As Above, if we do not use async in below function , the second function would only be executed once the first function got over
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val cs = async{getComputerScienceStudent()}
+//            val me = async {getMechanicalStudent()}
+//            Log.d(ASYNC_AWAIT,"Computer Science ${cs.await()}  Mechanical -> ${me.await()}")
+//            Log.d(ASYNC_AWAIT,"Async Task Completed")
+//        }
+    }
+    private suspend fun getMechanicalStudent() : Int{
+        delay(1000)
+        return 132
+    }
+    private suspend fun getComputerScienceStudent(): Int {
+        delay(1000)
+        return 100
+    }
+
 
     private fun onSuspendFunctionClicked() {
         /*
@@ -43,7 +90,6 @@ class CoroutinesFragment : Fragment(){
         This allows coroutines to cooperate, ensuring that threads are not left idle while waiting.
         The logs below illustrate how these coroutines interleave and work together.
         */
-
         binding?.btnSuspendFunctions?.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch{
                 suspendSimulationOne()
@@ -53,7 +99,6 @@ class CoroutinesFragment : Fragment(){
             }
         }
     }
-
     private suspend fun suspendSimulationOne(){
         delay(1000)
         Log.d(SUSPEND_FUNCTION,"SF-1 LOG-1")
@@ -64,7 +109,6 @@ class CoroutinesFragment : Fragment(){
         delay(6000)
         Log.d(SUSPEND_FUNCTION,"SF-1 LOG-4")
     }
-
     private suspend fun suspendSimulationTwo(){
         delay(500)
         Log.d(SUSPEND_FUNCTION,"SF-2 LOG-1")
@@ -77,12 +121,12 @@ class CoroutinesFragment : Fragment(){
 
     }
 
+
     private fun onCoroutineScopeClicked() {
         binding?.btnCoroutineScope?.setOnClickListener {
             simulateCoroutineScope()
         }
     }
-
     private fun simulateCoroutineScope() {
         /*Simulates That Coroutines Does not Block the Code or Thread
          OTHERWISE KOTLIN CODE GOES LINE BY LINE AND DOES NOT CONTINUE
@@ -107,5 +151,10 @@ class CoroutinesFragment : Fragment(){
         }
         Log.d(COROUTINE_SCOPE,"User Clicked A Button")
         Toast.makeText(requireContext(), "You Clicked A Button", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
     }
 }
