@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.androidmasterclass.databinding.CoroutinesFragmentBinding
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class CoroutinesFragment : Fragment(){
@@ -21,6 +23,7 @@ class CoroutinesFragment : Fragment(){
         const val COROUTINE_SCOPE = "COROUTINE SCOPE"
         const val SUSPEND_FUNCTION = "SUSPEND FUNCTION"
         const val ASYNC_AWAIT = "ASYNC_AWAIT"
+        const val JOB = "JOB"
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +39,43 @@ class CoroutinesFragment : Fragment(){
         onCoroutineScopeClicked()
         onSuspendFunctionClicked()
         onAsyncAwaitClicked()
+        onCoroutineJobsClicked()
     }
 
+    private fun onCoroutineJobsClicked() {
+        binding?.btnJobs?.setOnClickListener {
+            lifecycleScope.launch {
+                simulateJobAndCancel()
+            }
+        }
+    }
+
+    private suspend fun simulateJobAndCancel(){
+        val parentJob = CoroutineScope(Dispatchers.IO).launch{
+            //even if we cancel the coroutine it will run for some time if the thread is busy and do not check. so we have to manually check it
+            if(isActive) {
+                Log.d(JOB, "PARENT JOB STARTED")
+                //if normal code is present in coroutine, it will go line by line execution , if coroutine within coroutine ,the child may start in another thread and parent coroutine will continue
+                //we can change the childs context also
+                launch(Dispatchers.Default) {
+                    try {
+                        Log.d(JOB, "CHILD JOB STARTED")
+                        delay(5000)
+                        Log.d(JOB, "CHILD JOB ENDED")
+                    } catch (e: CancellationException) {
+                        Log.d(JOB, "CHILD JOB CANCELLED")
+                    }
+                }
+                delay(1000)
+                Log.d(JOB, "PARENT JOB ENDED")
+            }
+        }
+        delay(2000)
+        //if parent is cancelled , its child automatically gets cancelled
+        parentJob.cancel()
+        parentJob.join()
+        Log.d(JOB,"PARENT JOB COMPLETED")
+    }
     private fun onAsyncAwaitClicked() {
         binding?.btnAwaitAndAsync?.setOnClickListener {
             // We Used Coroutine here also because Suspend Functions Can Only be Called from Suspend functions or coroutine
