@@ -10,4 +10,10 @@
     <string name="async_await">Async Await</string>
     <string name="runWithAndBlocking">Run With And Blocking</string>
     <string name="lifecycle_scope">Lifecycle Scope</string>
+    <string name="one_to_one">One to One</string>
+    <string name="one_to_many">One to Many</string>
+    <string name="many_to_many">Many to Many</string>
+    <string name="input">Input</string>
+    <string name="output">Output</string>
+    <string name="room_db">Room Db</string>
 </resources>

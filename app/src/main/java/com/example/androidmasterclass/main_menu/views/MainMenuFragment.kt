@@ -34,6 +34,7 @@ class MainMenuFragment : Fragment() {
         mainMenuAdapter.onClick = {
             val data = when(it){
                 getString(R.string.coroutines)-> R.id.action_mainMenuFragment_to_coroutinesFragment
+                getString(R.string.room_db)-> R.id.action_mainMenuFragment_to_roomMainMenuFragment
                 else -> R.id.action_mainMenuFragment_to_coroutinesFragment
             }
             navigate(data)
@@ -55,7 +56,8 @@ class MainMenuFragment : Fragment() {
 
     private fun returnMainMenuData(): List<DataMainMenu> {
         return listOf(
-            DataMainMenu(getString(R.string.coroutines))
+            DataMainMenu(getString(R.string.coroutines)),
+            DataMainMenu(getString(R.string.room_db))
         )
     }
 
