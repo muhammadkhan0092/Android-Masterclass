@@ -73,10 +73,10 @@
         android:label="RoomManyToManyInputFragment" />
     <fragment
         android:id="@+id/roomOneToOneDisplayFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.RoomOneToOneDisplayFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneDisplayFragment"
         android:label="RoomOneToOneDisplayFragment" />
     <fragment
         android:id="@+id/roomOneToOneInputFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.RoomOneToOneInputFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneInputFragment"
         android:label="RoomOneToOneInputFragment" />
 </navigation>

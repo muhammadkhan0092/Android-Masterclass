@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RoomMainMenuFragment : Fragment(){
     private var _binding : RoomMainMenuFragmentBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +49,7 @@ class RoomMainMenuFragment : Fragment(){
     }
     private fun onOneToOneClicked() {
         binding.btnOneToOne.setOnClickListener {
-            navigate(getString(R.string.one_to_many))
+            navigate(getString(R.string.one_to_one))
         }
     }
 

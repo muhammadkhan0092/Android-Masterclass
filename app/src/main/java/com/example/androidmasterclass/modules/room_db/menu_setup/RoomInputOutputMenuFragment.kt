@@ -10,7 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.RoomInputOutputMenuFragmentBinding
 import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RoomInputOutputMenuFragment : Fragment(){
     private var _binding : RoomInputOutputMenuFragmentBinding? = null
     private val navArgs by navArgs<RoomInputOutputMenuFragmentArgs>()

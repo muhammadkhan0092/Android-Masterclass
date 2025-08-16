@@ -11,7 +11,9 @@ import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.MainMenuFragmentBinding
 import com.example.androidmasterclass.main_menu.adapters.MainMenuAdapter
 import com.example.androidmasterclass.main_menu.model.DataMainMenu
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainMenuFragment : Fragment() {
     private var binding : MainMenuFragmentBinding? = null
     private val mainMenuAdapter by lazy { MainMenuAdapter() }

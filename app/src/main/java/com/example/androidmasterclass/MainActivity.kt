@@ -3,7 +3,9 @@ package com.example.androidmasterclass
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidmasterclass.databinding.MainActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var binding : MainActivityBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
