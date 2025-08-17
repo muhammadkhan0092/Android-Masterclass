@@ -19,6 +19,12 @@ interface ManyToManyDao {
     @Insert
     suspend fun insertCourse(dataCourse: DataCourse)
 
+    @Query("SELECT * FROM DataStudent")
+    fun getStudents() : Flow<List<DataStudent>>
+
+    @Query("SELECT * FROM DataCourse")
+    fun getCourses() : Flow<List<DataCourse>>
+
     @Insert
     suspend fun insertStudentCourseCross(dataStudentCourseCross: DataStudentCourseCross)
 

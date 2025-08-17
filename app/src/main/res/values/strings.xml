@@ -26,4 +26,7 @@
     <string name="display_course">Display Course</string>
     <string name="diplay_student">Display Student</string>
     <string name="cross_display">Display Cross</string>
+    <string name="insert">Insert</string>
+    <string name="hint_course">Enter Course Name</string>
+    <string name="hint_student">Enter Student Name</string>
 </resources>

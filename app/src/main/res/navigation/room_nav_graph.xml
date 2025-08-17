@@ -29,7 +29,11 @@
     <fragment
         android:id="@+id/roomOneToOneInputFragment"
         android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneInputFragment"
-        android:label="RoomOneToOneInputFragment" />
+        android:label="RoomOneToOneInputFragment" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/roomOneToOneDisplayFragment"
         android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneDisplayFragment"
@@ -54,7 +58,11 @@
     <fragment
         android:id="@+id/roomManyToManyDisplayCourseAndStudentFragment"
         android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyDisplayCourseAndStudentFragment"
-        android:label="RoomManyToManyDisplayCourseAndStudentFragment" />
+        android:label="RoomManyToManyDisplayCourseAndStudentFragment" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/roomManyToManyDisplayCourseStudentCrossFragment"
         android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyDisplayCourseStudentCrossFragment"
@@ -62,7 +70,11 @@
     <fragment
         android:id="@+id/roomManyToManyInputCourseAndStudentFragment"
         android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyInputCourseAndStudentFragment"
-        android:label="RoomManyToManyInputCourseAndStudentFragment" />
+        android:label="RoomManyToManyInputCourseAndStudentFragment" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/roomManyToManyInputCourseStudentCrossFragment"
         android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyInputCourseStudentCrossFragment"

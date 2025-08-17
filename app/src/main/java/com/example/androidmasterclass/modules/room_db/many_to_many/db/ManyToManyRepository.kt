@@ -44,6 +44,30 @@ class ManyToManyRepository @Inject constructor(private val database: CustomRoomD
         }
     }
 
+    fun getStudents() : Flow<Resource<List<DataStudent>>> =
+        dao.getStudents()
+            .map<List<DataStudent>, Resource<List<DataStudent>>>{
+                Resource.Success(it)
+            }
+            .onStart {
+                emit(Resource.Loading())
+            }
+            .catch {
+                emit(Resource.Error(it.message?:"Unknown Error"))
+            }
+
+    fun getCourses() : Flow<Resource<List<DataCourse>>> =
+        dao.getCourses()
+            .map<List<DataCourse>, Resource<List<DataCourse>>>{
+                Resource.Success(it)
+            }
+            .onStart {
+                emit(Resource.Loading())
+            }
+            .catch {
+                emit(Resource.Error(it.message?:"Unknown Error"))
+            }
+
     fun getStudentWithCourses(id: Long): Flow<Resource<StudentWithCourses>> =
         dao.getStudentWithCourses(id)
             .map { courseWithStudents ->
