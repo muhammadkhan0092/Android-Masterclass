@@ -1,15 +1,16 @@
-package com.example.androidmasterclass.modules.room_db.many_to_many
+package com.example.androidmasterclass.modules.room_db.many_to_many.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.androidmasterclass.databinding.RoomManyToManyDisplayFragmentBinding
-import com.example.androidmasterclass.databinding.RoomManyToManyInputFragmentBinding
+import com.example.androidmasterclass.databinding.RoomManyToManyDisplayCourseAndStudentFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class RoomManyToManyInputFragment : Fragment(){
-    private var _binding : RoomManyToManyInputFragmentBinding? = null
+@AndroidEntryPoint
+class RoomManyToManyDisplayCourseAndStudentFragment : Fragment(){
+    private var _binding : RoomManyToManyDisplayCourseAndStudentFragmentBinding? = null
     private val binding get() = _binding!!
 
 
@@ -18,7 +19,7 @@ class RoomManyToManyInputFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = RoomManyToManyInputFragmentBinding.inflate(inflater,container,false)
+        _binding = RoomManyToManyDisplayCourseAndStudentFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }
 

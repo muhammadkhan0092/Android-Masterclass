@@ -20,4 +20,10 @@
     <string name="enter_email">Enter Email</string>
     <string name="enter_city">Enter City</string>
     <string name="save">Save</string>
+    <string name="input_student">Input Student</string>
+    <string name="input_course">Input Course</string>
+    <string name="s_c_cross">Input Cross</string>
+    <string name="display_course">Display Course</string>
+    <string name="diplay_student">Display Student</string>
+    <string name="cross_display">Display Cross</string>
 </resources>

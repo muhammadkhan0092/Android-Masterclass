@@ -23,17 +23,6 @@
         app:layout_constraintTop_toBottomOf="@id/guideline" />
 
     <Button
-        android:id="@+id/btnOneToMany"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/btn_color"
-        android:text="@string/one_to_many"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnOneToOne" />
-
-    <Button
         android:id="@+id/btnManyToMany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +31,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnOneToMany" />
+        app:layout_constraintTop_toBottomOf="@id/btnOneToOne" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

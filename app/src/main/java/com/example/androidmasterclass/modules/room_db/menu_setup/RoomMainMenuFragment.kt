@@ -32,32 +32,22 @@ class RoomMainMenuFragment : Fragment(){
 
     private fun onClickListeners() {
         onOneToOneClicked()
-        onOneToManyClicked()
         onManyToManyClicked()
     }
 
     private fun onManyToManyClicked() {
         binding.btnManyToMany.setOnClickListener {
-            navigate(getString(R.string.many_to_many))
-        }
-    }
-
-    private fun onOneToManyClicked() {
-        binding.btnManyToMany.setOnClickListener {
-            navigate(getString(R.string.one_to_many))
+            navigate(R.id.action_roomMainMenuFragment_to_roomManyToManyMenuFragment)
         }
     }
     private fun onOneToOneClicked() {
         binding.btnOneToOne.setOnClickListener {
-            navigate(getString(R.string.one_to_one))
+            navigate(R.id.action_roomMainMenuFragment_to_roomOneToOneMenuFragment)
         }
     }
 
-    private fun navigate(text : String) {
-        val bundle = Bundle().also {
-            it.putString("type",text)
-        }
-        findNavController().navigate(R.id.action_roomMainMenuFragment_to_roomInputOutputMenuFragment,bundle)
+    private fun navigate(action : Int) {
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

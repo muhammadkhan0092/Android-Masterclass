@@ -1,5 +1,6 @@
 package com.example.androidmasterclass.main_menu.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.MainMenuFragmentBinding
 import com.example.androidmasterclass.main_menu.adapters.MainMenuAdapter
 import com.example.androidmasterclass.main_menu.model.DataMainMenu
+import com.example.androidmasterclass.modules.room_db.views.RoomMainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,13 +36,17 @@ class MainMenuFragment : Fragment() {
 
     private fun onMenuItemClickListener() {
         mainMenuAdapter.onClick = {
-            val data = when(it){
-                getString(R.string.coroutines)-> R.id.action_mainMenuFragment_to_coroutinesFragment
-                getString(R.string.room_db)-> R.id.action_mainMenuFragment_to_roomMainMenuFragment
-                else -> R.id.action_mainMenuFragment_to_coroutinesFragment
+            when(it){
+                getString(R.string.coroutines)-> navigate(R.id.action_mainMenuFragment_to_coroutinesFragment)
+                getString(R.string.room_db)-> startRoomActivity()
+                else -> navigate(R.id.action_mainMenuFragment_to_coroutinesFragment)
             }
-            navigate(data)
         }
+    }
+
+    private fun startRoomActivity() {
+        val intent = Intent(requireContext(), RoomMainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigate(navigationId: Int) {

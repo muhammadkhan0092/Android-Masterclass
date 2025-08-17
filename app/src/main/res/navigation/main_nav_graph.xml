@@ -13,70 +13,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_coroutinesFragment"
             app:destination="@id/coroutinesFragment" />
-        <action
-            android:id="@+id/action_mainMenuFragment_to_roomMainMenuFragment"
-            app:destination="@id/roomMainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/coroutinesFragment"
         android:name="com.example.androidmasterclass.coroutines.CoroutinesFragment"
         android:label="CoroutinesFragment" />
-    <fragment
-        android:id="@+id/roomMainMenuFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.menu_setup.RoomMainMenuFragment"
-        android:label="RoomMainMenuFragment" >
-        <action
-            android:id="@+id/action_roomMainMenuFragment_to_roomInputOutputMenuFragment"
-            app:destination="@id/roomInputOutputMenuFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/roomInputOutputMenuFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.menu_setup.RoomInputOutputMenuFragment"
-        android:label="RoomInputOutputMenuFragment" >
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomOneToManyDisplayFragment"
-            app:destination="@id/roomOneToManyDisplayFragment" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomOneToOneDisplayFragment"
-            app:destination="@id/roomOneToOneDisplayFragment" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomOneToOneInputFragment"
-            app:destination="@id/roomOneToOneInputFragment" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomManyToManyInputFragment"
-            app:destination="@id/roomManyToManyInputFragment" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomManyToManyDisplayFragment"
-            app:destination="@id/roomManyToManyDisplayFragment" />
-        <action
-            android:id="@+id/action_roomInputOutputMenuFragment_to_roomOneToManyInputFragment"
-            app:destination="@id/roomOneToManyInputFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/roomManyToManyDisplayFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.RoomManyToManyDisplayFragment"
-        android:label="RoomManyToManyDisplayFragment" />
-    <fragment
-        android:id="@+id/roomOneToManyDisplayFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_many.RoomOneToManyDisplayFragment"
-        android:label="RoomOneToManyDisplayFragment" />
-    <fragment
-        android:id="@+id/roomOneToManyInputFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_many.RoomOneToManyInputFragment"
-        android:label="RoomOneToManyInputFragment" />
-    <fragment
-        android:id="@+id/roomManyToManyInputFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.RoomManyToManyInputFragment"
-        android:label="RoomManyToManyInputFragment" />
-    <fragment
-        android:id="@+id/roomOneToOneDisplayFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneDisplayFragment"
-        android:label="RoomOneToOneDisplayFragment" />
-    <fragment
-        android:id="@+id/roomOneToOneInputFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneInputFragment"
-        android:label="RoomOneToOneInputFragment" />
 </navigation>
