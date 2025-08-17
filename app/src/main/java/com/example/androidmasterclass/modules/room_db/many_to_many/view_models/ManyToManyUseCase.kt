@@ -4,6 +4,7 @@ import com.example.androidlauncher.utils.Resource
 import com.example.androidmasterclass.modules.room_db.many_to_many.db.ManyToManyRepository
 import com.example.androidmasterclass.modules.room_db.many_to_many.models.DataCourse
 import com.example.androidmasterclass.modules.room_db.many_to_many.models.DataStudent
+import com.example.androidmasterclass.modules.room_db.many_to_many.models.DataStudentCourseCross
 import javax.inject.Inject
 
 class ManyToManyUseCase @Inject constructor(private val repository: ManyToManyRepository) {
@@ -16,6 +17,8 @@ class ManyToManyUseCase @Inject constructor(private val repository: ManyToManyRe
         return if(student.studentName.isEmpty())  Resource.Error("Empty Student Name")
         else repository.insertStudent(student)
     }
+
+    suspend fun insertStudentCourseCross(data : DataStudentCourseCross) = repository.insertStudentCourseCross(data)
 
     fun getStudents() = repository.getStudents()
     fun getCourses() = repository.getCourses()

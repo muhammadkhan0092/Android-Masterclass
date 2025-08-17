@@ -78,15 +78,17 @@ class RoomManyToManyDisplayCourseAndStudentFragment : Fragment(){
         }
     }
     private fun setStudentData(data: List<DataStudent>) {
-        val text = data.map {
-            it.studentId.toString() + "      " + it.studentName
+        var text = ""
+        data.forEach {
+            text+=it.studentId.toString() + "      " + it.studentName + "\n"
         }
         binding.tvDetails.text = text.toString()
     }
 
     private fun setCourseData(data: List<DataCourse>) {
-        val text = data.map {
-            it.courseId.toString() + "      " + it.courseName
+        var text = ""
+        data.forEach {
+            text+=it.courseId.toString() + "      " + it.courseName + "\n"
         }
         binding.tvDetails.text = text.toString()
 
