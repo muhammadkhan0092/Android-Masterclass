@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.androidmasterclass.main_menu.views.MainMenuFragment"
+        android:name="com.example.androidmasterclass.main_menu.presentation.views.MainMenuFragment"
         android:label="main_menu_fragment"
         tools:layout="@layout/main_menu_fragment" >
         <action
@@ -16,6 +16,6 @@
     </fragment>
     <fragment
         android:id="@+id/coroutinesFragment"
-        android:name="com.example.androidmasterclass.coroutines.CoroutinesFragment"
+        android:name="com.example.androidmasterclass.coroutines.views.CoroutinesFragment"
         android:label="CoroutinesFragment" />
 </navigation>

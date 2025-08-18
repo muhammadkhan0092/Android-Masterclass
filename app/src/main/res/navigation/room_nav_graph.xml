@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/roomMainMenuFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.menu_setup.RoomMainMenuFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.views.menu_setup.RoomMainMenuFragment"
         android:label="RoomMainMenuFragment" >
         <action
             android:id="@+id/action_roomMainMenuFragment_to_roomManyToManyMenuFragment"
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/roomOneToOneMenuFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneMenuFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.presentation.views.RoomOneToOneMenuFragment"
         android:label="RoomOneToOneMenuFragment" >
         <action
             android:id="@+id/action_roomOneToOneMenuFragment_to_roomOneToOneDisplayFragment"
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/roomOneToOneInputFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneInputFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.presentation.views.RoomOneToOneInputFragment"
         android:label="RoomOneToOneInputFragment" >
         <argument
             android:name="type"
@@ -36,11 +36,11 @@
     </fragment>
     <fragment
         android:id="@+id/roomOneToOneDisplayFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.views.RoomOneToOneDisplayFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.one_to_one.presentation.views.RoomOneToOneDisplayFragment"
         android:label="RoomOneToOneDisplayFragment" />
     <fragment
         android:id="@+id/roomManyToManyMenuFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyMenuFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.presentation.views.RoomManyToManyMenuFragment"
         android:label="RoomManyToManyMenuFragment" >
         <action
             android:id="@+id/action_roomManyToManyMenuFragment_to_roomManyToManyInputCourseStudentCrossFragment"
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/roomManyToManyDisplayCourseAndStudentFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyDisplayCourseAndStudentFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.presentation.views.RoomManyToManyDisplayCourseAndStudentFragment"
         android:label="RoomManyToManyDisplayCourseAndStudentFragment" >
         <argument
             android:name="type"
@@ -65,11 +65,11 @@
     </fragment>
     <fragment
         android:id="@+id/roomManyToManyDisplayCourseStudentCrossFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyDisplayCourseStudentCrossFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.presentation.views.RoomManyToManyDisplayCourseStudentCrossFragment"
         android:label="RoomManyToManyDisplayCourseStudentCrossFragment" />
     <fragment
         android:id="@+id/roomManyToManyInputCourseAndStudentFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyInputCourseAndStudentFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.presentation.views.RoomManyToManyInputCourseAndStudentFragment"
         android:label="RoomManyToManyInputCourseAndStudentFragment" >
         <argument
             android:name="type"
@@ -77,6 +77,6 @@
     </fragment>
     <fragment
         android:id="@+id/roomManyToManyInputCourseStudentCrossFragment"
-        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.views.RoomManyToManyInputCourseStudentCrossFragment"
+        android:name="com.example.androidmasterclass.modules.room_db.many_to_many.presentation.views.RoomManyToManyInputCourseStudentCrossFragment"
         android:label="RoomManyToManyInputCourseStudentCrossFragment" />
 </navigation>
