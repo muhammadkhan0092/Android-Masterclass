@@ -34,4 +34,5 @@
     <string name="search_course">Search Course</string>
     <string name="search_student">Search Student</string>
     <string name="enter_course_or_student_id">Enter Course or Student Id</string>
+    <string name="fetch_next_page">Fetch Next Page</string>
 </resources>
