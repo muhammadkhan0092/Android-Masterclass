@@ -6,15 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidlauncher.utils.VerticalItemDecoration
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.FirestoreDisplayFragmentBinding
 import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
+import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreDisplayAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FirestoreDisplayFragment : Fragment(){
     private var _binding : FirestoreDisplayFragmentBinding? = null
     private val binding get() = _binding!!
+    private val firestoreDisplayAdapter by lazy { FirestoreDisplayAdapter() }
 
 
     override fun onCreateView(
@@ -28,16 +32,22 @@ class FirestoreDisplayFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onClickListeners()
+        setupUpdateRv()
+        onUpdateClicked()
     }
 
-    private fun onClickListeners() {
+    private fun onUpdateClicked() {
+        firestoreDisplayAdapter.onClick = {
 
+        }
     }
 
-
-    private fun navigate(action : Int) {
-        findNavController().navigate(action)
+    private fun setupUpdateRv() {
+        binding.displayRv.apply {
+            adapter = firestoreDisplayAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+            addItemDecoration(VerticalItemDecoration(30))
+        }
     }
 
     override fun onDestroyView() {
