@@ -36,4 +36,7 @@
     <string name="enter_course_or_student_id">Enter Course or Student Id</string>
     <string name="fetch_next_page">Fetch Next Page</string>
     <string name="retrofit">Retrofit</string>
+    <string name="update">Update</string>
+    <string name="display">Display</string>
+    <string name="firestore">Firestore</string>
 </resources>

@@ -13,6 +13,7 @@ import com.example.androidmasterclass.databinding.MainMenuFragmentBinding
 import com.example.androidmasterclass.main_menu.presentation.adapters.MainMenuAdapter
 import com.example.androidmasterclass.main_menu.presentation.model.DataMainMenu
 import com.example.androidmasterclass.modules.api_integration.presentation.views.ProductsActivity
+import com.example.androidmasterclass.modules.firestore.presentation.views.activity.FirestoreMainActivity
 import com.example.androidmasterclass.modules.room_db.views.RoomMainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,9 +42,15 @@ class MainMenuFragment : Fragment() {
                 getString(R.string.coroutines)-> navigate(R.id.action_mainMenuFragment_to_coroutinesFragment)
                 getString(R.string.room_db)-> startRoomActivity()
                 getString(R.string.retrofit)-> startProductsActivity()
+                getString(R.string.firestore)-> startFirestoreActivity()
                 else -> navigate(R.id.action_mainMenuFragment_to_coroutinesFragment)
             }
         }
+    }
+
+    private fun startFirestoreActivity() {
+        val intent = Intent(requireContext(), FirestoreMainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startProductsActivity() {
@@ -73,7 +80,8 @@ class MainMenuFragment : Fragment() {
         return listOf(
             DataMainMenu(getString(R.string.coroutines)),
             DataMainMenu(getString(R.string.room_db)),
-            DataMainMenu(getString(R.string.retrofit))
+            DataMainMenu(getString(R.string.retrofit)),
+            DataMainMenu(getString(R.string.firestore))
         )
     }
 

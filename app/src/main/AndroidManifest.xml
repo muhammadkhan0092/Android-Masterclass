@@ -34,6 +34,10 @@
             android:name=".modules.api_integration.presentation.views.ProductsActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".modules.firestore.presentation.views.activity.FirestoreMainActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

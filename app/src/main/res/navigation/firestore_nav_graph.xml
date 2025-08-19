@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/firestore_nav_graph"
+    app:startDestination="@id/firestoreMainMenuFragment">
+
+    <fragment
+        android:id="@+id/firestoreMainMenuFragment"
+        android:name="com.example.androidmasterclass.modules.firestore.presentation.views.fragments.FirestoreMainMenuFragment"
+        android:label="FirestoreMainMenuFragment" >
+        <action
+            android:id="@+id/action_firestoreMainMenuFragment_to_firestoreUpdateFragment"
+            app:destination="@id/firestoreUpdateFragment" />
+        <action
+            android:id="@+id/action_firestoreMainMenuFragment_to_firestoreDisplayFragment"
+            app:destination="@id/firestoreDisplayFragment" />
+        <action
+            android:id="@+id/action_firestoreMainMenuFragment_to_firestoreInsertFragment"
+            app:destination="@id/firestoreInsertFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firestoreDisplayFragment"
+        android:name="com.example.androidmasterclass.modules.firestore.presentation.views.fragments.FirestoreDisplayFragment"
+        android:label="FirestoreDisplayFragment" />
+    <fragment
+        android:id="@+id/firestoreInsertFragment"
+        android:name="com.example.androidmasterclass.modules.firestore.presentation.views.fragments.FirestoreInsertFragment"
+        android:label="FirestoreInsertFragment" />
+    <fragment
+        android:id="@+id/firestoreUpdateFragment"
+        android:name="com.example.androidmasterclass.modules.firestore.presentation.views.fragments.FirestoreUpdateFragment"
+        android:label="FirestoreUpdateFragment" />
+</navigation>
