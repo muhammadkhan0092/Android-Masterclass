@@ -54,8 +54,12 @@ class FirestoreDisplayAdapter : RecyclerView.Adapter<FirestoreDisplayAdapter.Fir
 
     inner class FirestoreDisplayViewHolder(val binding: ItemFirestoreDisplayBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: DataUser) {
-            binding.ivDelete.setOnClickListener {
-                onClick?.invoke(data)
+            binding.apply {
+                tvEmail.text = data.email
+                tvName.text = data.name
+                ivDelete.setOnClickListener {
+                    onClick?.invoke(data)
+                }
             }
         }
     }

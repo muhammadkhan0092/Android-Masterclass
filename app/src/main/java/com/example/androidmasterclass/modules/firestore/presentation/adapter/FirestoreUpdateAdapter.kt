@@ -61,6 +61,8 @@ class FirestoreUpdateAdapter : RecyclerView.Adapter<FirestoreUpdateAdapter.Fires
         fun bind(user: DataUser) {
             binding.apply {
                 tvEmail.text = user.email
+                etName.text = Editable.Factory.getInstance().newEditable(user.name)
+
                 btnUpdate.setOnClickListener {
                     val newName = etName.text.toString()
                     if(newName==user.name){

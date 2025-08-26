@@ -4,20 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidlauncher.utils.Resource
 import com.example.androidlauncher.utils.VerticalItemDecoration
 import com.example.androidmasterclass.databinding.FirestoreUpdateFragmentBinding
 import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreUpdateAdapter
+import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FirestoreUpdateFragment : Fragment(){
     private var _binding : FirestoreUpdateFragmentBinding? = null
     private val binding get() = _binding!!
     private val firestoreUpdateAdapter by lazy { FirestoreUpdateAdapter() }
-
+    private val viewModel by viewModels<FirestoreViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +39,38 @@ class FirestoreUpdateFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         setupUpdateRv()
         onUpdateClicked()
+        observeUsers()
     }
 
     private fun onUpdateClicked() {
         firestoreUpdateAdapter.onClick = {
-
+            lifecycleScope.launch {
+                val result = viewModel.updateUser(it)
+                when(result){
+                    is Resource.Error<*> -> Toast.makeText(requireContext(), result.message!!, Toast.LENGTH_SHORT).show()
+                    is Resource.Loading<*> -> {}
+                    is Resource.Success<*> -> {
+                        Toast.makeText(requireContext(), "Update Successfull", Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Unspecified<*> -> {}
+                }
+            }
         }
     }
 
+    private fun observeUsers() {
+        lifecycleScope.launch {
+            viewModel.getUsers().collectLatest {
+                binding.progressBar.visibility = View.GONE
+                when(it){
+                    is Resource.Error<*> -> Toast.makeText(requireContext(), it.message!!, Toast.LENGTH_SHORT).show()
+                    is Resource.Loading<*> -> Toast.makeText(requireContext(), "Fetching Data", Toast.LENGTH_SHORT).show()
+                    is Resource.Success<*> -> firestoreUpdateAdapter.differ.submitList(it.data!!)
+                    is Resource.Unspecified<*> -> {}
+                }
+            }
+        }
+    }
     private fun setupUpdateRv() {
         binding.updateRv.apply {
             adapter = firestoreUpdateAdapter
@@ -47,7 +78,6 @@ class FirestoreUpdateFragment : Fragment(){
             addItemDecoration(VerticalItemDecoration(30))
         }
     }
-
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()

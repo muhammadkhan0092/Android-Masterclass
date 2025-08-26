@@ -4,22 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidlauncher.utils.Resource
 import com.example.androidlauncher.utils.VerticalItemDecoration
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.FirestoreDisplayFragmentBinding
 import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
 import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreDisplayAdapter
+import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FirestoreDisplayFragment : Fragment(){
     private var _binding : FirestoreDisplayFragmentBinding? = null
     private val binding get() = _binding!!
     private val firestoreDisplayAdapter by lazy { FirestoreDisplayAdapter() }
-
+    private val viewModel by activityViewModels<FirestoreViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,14 +40,23 @@ class FirestoreDisplayFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUpdateRv()
-        onUpdateClicked()
+        observeUsers()
     }
 
-    private fun onUpdateClicked() {
-        firestoreDisplayAdapter.onClick = {
-
+    private fun observeUsers() {
+        lifecycleScope.launch {
+            viewModel.getUsers().collectLatest {
+                binding.progressBar.visibility = View.GONE
+                when(it){
+                    is Resource.Error<*> -> Toast.makeText(requireContext(), it.message!!, Toast.LENGTH_SHORT).show()
+                    is Resource.Loading<*> -> Toast.makeText(requireContext(), "Fetching Data", Toast.LENGTH_SHORT).show()
+                    is Resource.Success<*> -> firestoreDisplayAdapter.differ.submitList(it.data!!)
+                    is Resource.Unspecified<*> -> {}
+                }
+            }
         }
     }
+
 
     private fun setupUpdateRv() {
         binding.displayRv.apply {
