@@ -41,6 +41,23 @@ class FirestoreDisplayFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         setupUpdateRv()
         observeUsers()
+        onDeleteClicked()
+    }
+
+    private fun onDeleteClicked() {
+        firestoreDisplayAdapter.onClick = {
+            binding.progressBar.visibility = View.VISIBLE
+            lifecycleScope.launch {
+                val response = viewModel.deleteUser(it.email)
+                binding.progressBar.visibility = View.GONE
+                when(response){
+                    is Resource.Error<*> -> Toast.makeText(requireContext(), response.message!!, Toast.LENGTH_SHORT).show()
+                    is Resource.Loading<*> -> {}
+                    is Resource.Success<*> -> Toast.makeText(requireContext(), "Deletion Successfull", Toast.LENGTH_SHORT).show()
+                    is Resource.Unspecified<*> -> {}
+                }
+            }
+        }
     }
 
     private fun observeUsers() {

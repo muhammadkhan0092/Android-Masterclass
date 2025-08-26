@@ -68,6 +68,9 @@ class FirestoreUpdateAdapter : RecyclerView.Adapter<FirestoreUpdateAdapter.Fires
                     if(newName==user.name){
                         Toast.makeText(binding.root.context, "Update Name", Toast.LENGTH_SHORT).show()
                     }
+                    else if(newName.trim()==""){
+                        Toast.makeText(binding.root.context, "Enter Valid Name", Toast.LENGTH_SHORT).show()
+                    }
                     else
                     {
                         onClick?.invoke(user.copy(name = newName))

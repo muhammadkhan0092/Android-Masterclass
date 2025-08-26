@@ -44,8 +44,10 @@ class FirestoreUpdateFragment : Fragment(){
 
     private fun onUpdateClicked() {
         firestoreUpdateAdapter.onClick = {
+            binding.progressBar.visibility = View.VISIBLE
             lifecycleScope.launch {
                 val result = viewModel.updateUser(it)
+                binding.progressBar.visibility = View.GONE
                 when(result){
                     is Resource.Error<*> -> Toast.makeText(requireContext(), result.message!!, Toast.LENGTH_SHORT).show()
                     is Resource.Loading<*> -> {}

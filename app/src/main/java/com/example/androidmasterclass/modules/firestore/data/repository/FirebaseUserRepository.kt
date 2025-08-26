@@ -43,7 +43,14 @@ class FirebaseUserRepository @Inject constructor(private val firebaseFirestore: 
         awaitClose { subscription.remove() }
     }
 
-    override fun deleteUser(user: DataUser) {
+    override suspend fun deleteUser(email : String): Resource<Unit> {
+        return try {
+            firebaseFirestore.collection(masterclass_user).document(email).delete()
+            Resource.Success(Unit)
+        }
+        catch (e : Exception){
+            Resource.Error(e.message?:"Unknown Error")
+        }
 
     }
 

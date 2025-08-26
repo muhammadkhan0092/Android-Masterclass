@@ -12,4 +12,5 @@ class FirestoreViewModel @Inject constructor(private val firestoreUseCase: Fires
     fun getUsers() = firestoreUseCase.getUsers()
     suspend fun insertUser(user: DataUser) = firestoreUseCase.insertData(user)
     suspend fun updateUser(user: DataUser) = firestoreUseCase.updateUser(user)
+    suspend fun deleteUser(email: String) = firestoreUseCase.deleteUser(email)
 }
