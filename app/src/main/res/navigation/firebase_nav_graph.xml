@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/firebase_nav_graph"
+    app:startDestination="@id/firebaseMainMenuFragment">
+
+    <fragment
+        android:id="@+id/firebaseDisplayFragment"
+        android:name="com.example.androidmasterclass.modules.firebase_realtime.presentation.views.fragments.FirebaseDisplayFragment"
+        android:label="FirebaseDisplayFragment" />
+    <fragment
+        android:id="@+id/firebaseMainMenuFragment"
+        android:name="com.example.androidmasterclass.modules.firebase_realtime.presentation.views.fragments.FirebaseMainMenuFragment"
+        android:label="FirebaseMainMenuFragment" >
+        <action
+            android:id="@+id/action_firebaseMainMenuFragment_to_firebaseDisplayFragment"
+            app:destination="@id/firebaseDisplayFragment" />
+        <action
+            android:id="@+id/action_firebaseMainMenuFragment_to_firebaseUpdateFragment"
+            app:destination="@id/firebaseUpdateFragment" />
+        <action
+            android:id="@+id/action_firebaseMainMenuFragment_to_firebaseInsertFragment"
+            app:destination="@id/firebaseInsertFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firebaseInsertFragment"
+        android:name="com.example.androidmasterclass.modules.firebase_realtime.presentation.views.fragments.FirebaseInsertFragment"
+        android:label="FirebaseInsertFragment" />
+    <fragment
+        android:id="@+id/firebaseUpdateFragment"
+        android:name="com.example.androidmasterclass.modules.firebase_realtime.presentation.views.fragments.FirebaseUpdateFragment"
+        android:label="FirebaseUpdateFragment" />
+</navigation>

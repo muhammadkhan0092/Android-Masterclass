@@ -12,7 +12,7 @@ import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 import javax.inject.Inject
 
-class FirebaseUserRepository @Inject constructor(private val firebaseFirestore: FirebaseFirestore) : UserRepository {
+class FireStoreUserRepository @Inject constructor(private val firebaseFirestore: FirebaseFirestore) : UserRepository {
     override suspend fun insertUser(user: DataUser) : Resource<Unit> {
         return try {
             firebaseFirestore.collection(masterclass_user).document(user.email).set(user).await()
@@ -28,7 +28,7 @@ class FirebaseUserRepository @Inject constructor(private val firebaseFirestore: 
             .collection(masterclass_user)
             .addSnapshotListener { snapshot, error ->
                 if (error != null) {
-                    close(error)
+                    trySend(Resource.Error(error.message ?: "Unknown Firestore Error"))
                     return@addSnapshotListener
                 }
                 val data = snapshot?.toObjects(DataUser::class.java)
@@ -43,25 +43,22 @@ class FirebaseUserRepository @Inject constructor(private val firebaseFirestore: 
         awaitClose { subscription.remove() }
     }
 
-    override suspend fun deleteUser(email : String): Resource<Unit> {
+    override suspend fun deleteUser(email: String): Resource<Unit> {
         return try {
-            firebaseFirestore.collection(masterclass_user).document(email).delete()
+            firebaseFirestore.collection(masterclass_user).document(email).delete().await()
             Resource.Success(Unit)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "Unknown Error")
         }
-        catch (e : Exception){
-            Resource.Error(e.message?:"Unknown Error")
-        }
-
     }
 
     override suspend fun updateUser(user: DataUser): Resource<Unit> {
         return try {
-            firebaseFirestore.collection(masterclass_user).document(user.email).set(user)
+            firebaseFirestore.collection(masterclass_user).document(user.email).set(user).await()
             Resource.Success(Unit)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "Unknown Error")
         }
-        catch (e : Exception){
-            Resource.Error(e.message?:"Unknown Error")
-        }
-
     }
+
 }
