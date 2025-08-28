@@ -39,4 +39,5 @@
     <string name="update">Update</string>
     <string name="display">Display</string>
     <string name="firestore">Firestore</string>
+    <string name="firebase">Firebase Realtime</string>
 </resources>

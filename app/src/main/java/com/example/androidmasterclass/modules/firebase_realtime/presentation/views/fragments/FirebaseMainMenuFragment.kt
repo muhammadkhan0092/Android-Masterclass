@@ -44,9 +44,9 @@ class FirebaseMainMenuFragment : Fragment(){
     private fun onItemClick() {
         mainMenuAdapter.onClick = {
             when(it){
-                getString(R.string.insert)-> navigate(R.id.action_firestoreMainMenuFragment_to_firestoreInsertFragment)
-                getString(R.string.display)->navigate(R.id.action_firestoreMainMenuFragment_to_firestoreDisplayFragment)
-                else -> navigate(R.id.action_firestoreMainMenuFragment_to_firestoreUpdateFragment)
+                getString(R.string.insert)-> navigate(R.id.action_firebaseMainMenuFragment_to_firebaseInsertFragment)
+                getString(R.string.display)->navigate(R.id.action_firebaseMainMenuFragment_to_firebaseDisplayFragment)
+                else -> navigate(R.id.action_firebaseMainMenuFragment_to_firebaseUpdateFragment)
             }
         }
     }

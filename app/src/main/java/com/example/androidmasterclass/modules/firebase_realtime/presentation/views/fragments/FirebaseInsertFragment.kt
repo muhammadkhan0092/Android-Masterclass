@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.androidmasterclass.databinding.FirestoreInsertFragmentBinding
+import com.example.androidmasterclass.modules.firebase_realtime.presentation.view_models.FirebaseViewModel
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
 import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 class FirebaseInsertFragment : Fragment(){
     private var _binding : FirestoreInsertFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by activityViewModels<FirestoreViewModel>()
+    private val viewModel by activityViewModels<FirebaseViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +52,8 @@ class FirebaseInsertFragment : Fragment(){
             }
             else
             {
+                binding.etEmail.text.clear()
+                binding.etName.text.clear()
                 Toast.makeText(requireContext(), "Data Inserted Successfully", Toast.LENGTH_SHORT).show()
             }
         }

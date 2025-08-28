@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidlauncher.utils.Resource
 import com.example.androidlauncher.utils.VerticalItemDecoration
 import com.example.androidmasterclass.databinding.FirestoreUpdateFragmentBinding
+import com.example.androidmasterclass.modules.firebase_realtime.presentation.view_models.FirebaseViewModel
 import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreUpdateAdapter
 import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,7 @@ class FirebaseUpdateFragment : Fragment(){
     private var _binding : FirestoreUpdateFragmentBinding? = null
     private val binding get() = _binding!!
     private val firestoreUpdateAdapter by lazy { FirestoreUpdateAdapter() }
-    private val viewModel by viewModels<FirestoreViewModel>()
+    private val viewModel by viewModels<FirebaseViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
