@@ -8,13 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidlauncher.utils.Resource
-import com.example.androidlauncher.utils.VerticalItemDecoration
-import com.example.androidmasterclass.R
+import com.example.androidmasterclass.utils.Resource
+import com.example.androidmasterclass.utils.VerticalItemDecoration
 import com.example.androidmasterclass.databinding.FirestoreDisplayFragmentBinding
-import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
 import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreDisplayAdapter
 import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel
 import dagger.hilt.android.AndroidEntryPoint

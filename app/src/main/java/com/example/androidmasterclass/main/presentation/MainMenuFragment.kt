@@ -1,4 +1,4 @@
-package com.example.androidmasterclass.main_menu.presentation.views
+package com.example.androidmasterclass.main.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidmasterclass.R
+import com.example.androidmasterclass.common.presentation.adapters.MainMenuAdapter
+import com.example.androidmasterclass.common.presentation.models.DataMainMenu
 import com.example.androidmasterclass.databinding.MainMenuFragmentBinding
-import com.example.androidmasterclass.main_menu.presentation.adapters.MainMenuAdapter
-import com.example.androidmasterclass.main_menu.presentation.model.DataMainMenu
 import com.example.androidmasterclass.modules.api_integration.presentation.views.ProductsActivity
 import com.example.androidmasterclass.modules.firebase_realtime.presentation.views.activity.FirebaseMainActivity
 import com.example.androidmasterclass.modules.firestore.presentation.views.activity.FirestoreMainActivity
@@ -76,7 +76,8 @@ class MainMenuFragment : Fragment() {
     private fun setupMainMenuRecyclerView() {
         binding?.mainMenuRv?.apply {
             adapter = mainMenuAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
         val mainMenuData = returnMainMenuData()
         mainMenuAdapter.differ.submitList(mainMenuData)

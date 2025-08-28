@@ -1,4 +1,4 @@
-package com.example.androidmasterclass.coroutines.views
+package com.example.androidmasterclass.modules.coroutines
 
 import android.os.Bundle
 import android.util.Log

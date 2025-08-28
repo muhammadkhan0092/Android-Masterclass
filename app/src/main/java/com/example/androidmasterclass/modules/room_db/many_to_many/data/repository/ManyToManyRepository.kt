@@ -1,6 +1,6 @@
 package com.example.androidmasterclass.modules.room_db.many_to_many.data.repository
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.room_db.db.CustomRoomDatabase
 import com.example.androidmasterclass.modules.room_db.many_to_many.domain.models.CourseWithStudents
 import com.example.androidmasterclass.modules.room_db.many_to_many.domain.models.DataCourse

@@ -1,8 +1,8 @@
 package com.example.androidmasterclass.modules.firebase_realtime.data.repository
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
-import com.example.androidmasterclass.modules.firestore.domain.repository.UserRepository
+import com.example.androidmasterclass.common.firebase.data.repository.UserRepository
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

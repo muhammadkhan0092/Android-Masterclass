@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidmasterclass.databinding.FirestoreMainActivityBinding
-import com.example.androidmasterclass.presentation.MainActivity
+import com.example.androidmasterclass.main.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

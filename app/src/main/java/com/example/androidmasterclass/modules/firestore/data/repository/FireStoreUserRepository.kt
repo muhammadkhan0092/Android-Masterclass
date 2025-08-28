@@ -1,9 +1,9 @@
 package com.example.androidmasterclass.modules.firestore.data.repository
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.firestore.data.constants.Constants.masterclass_user
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
-import com.example.androidmasterclass.modules.firestore.domain.repository.UserRepository
+import com.example.androidmasterclass.common.firebase.data.repository.UserRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

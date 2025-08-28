@@ -1,7 +1,7 @@
 package com.example.androidmasterclass.modules.room_db.one_to_one.data.repository
 
 import androidx.room.withTransaction
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.room_db.db.CustomRoomDatabase
 import com.example.androidmasterclass.modules.room_db.one_to_one.domain.models.DataAddress
 import com.example.androidmasterclass.modules.room_db.one_to_one.domain.models.DataUser

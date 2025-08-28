@@ -1,4 +1,4 @@
-package com.example.androidlauncher.utils
+package com.example.androidmasterclass.utils
 
 import android.graphics.Rect
 import android.view.View

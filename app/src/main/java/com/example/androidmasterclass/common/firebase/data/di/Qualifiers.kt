@@ -1,4 +1,4 @@
-package com.example.androidmasterclass
+package com.example.androidmasterclass.common.firebase.data.di
 
 import javax.inject.Qualifier
 

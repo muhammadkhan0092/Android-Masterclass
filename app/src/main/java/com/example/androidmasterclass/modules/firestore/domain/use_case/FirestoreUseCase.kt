@@ -1,9 +1,8 @@
 package com.example.androidmasterclass.modules.firestore.domain.use_case
 
-import com.example.androidmasterclass.FirestoreRepo
-import com.example.androidmasterclass.modules.firestore.data.repository.FireStoreUserRepository
+import com.example.androidmasterclass.common.firebase.data.di.FirestoreRepo
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
-import com.example.androidmasterclass.modules.firestore.domain.repository.UserRepository
+import com.example.androidmasterclass.common.firebase.data.repository.UserRepository
 import javax.inject.Inject
 
 class FirestoreUseCase @Inject constructor(@FirestoreRepo private val fireStoreUserRepository: UserRepository) {

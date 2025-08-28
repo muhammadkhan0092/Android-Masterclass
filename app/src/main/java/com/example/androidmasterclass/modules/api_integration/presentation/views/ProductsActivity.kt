@@ -8,8 +8,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidlauncher.utils.Resource
-import com.example.androidlauncher.utils.VerticalItemDecoration
+import com.example.androidmasterclass.utils.Resource
+import com.example.androidmasterclass.utils.VerticalItemDecoration
 import com.example.androidmasterclass.databinding.ProductsActivityBinding
 import com.example.androidmasterclass.modules.api_integration.presentation.view_models.ProductsViewModel
 import com.example.androidmasterclass.modules.api_integration.domain.models.Product

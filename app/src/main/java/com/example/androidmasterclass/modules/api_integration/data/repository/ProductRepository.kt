@@ -1,6 +1,6 @@
 package com.example.androidmasterclass.modules.api_integration.data.repository
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.api_integration.domain.usecase.products.returnErrorString
 import com.example.androidmasterclass.modules.api_integration.data.api.ProductsApi
 import com.example.androidmasterclass.modules.api_integration.data.models.DataProductResponse

@@ -1,4 +1,4 @@
-package com.example.androidlauncher.utils
+package com.example.androidmasterclass.utils
 
 sealed class Resource<T> (
     val data : T? = null,

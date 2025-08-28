@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidlauncher.utils.VerticalItemDecoration
+import com.example.androidmasterclass.utils.VerticalItemDecoration
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.FirestoreMainMenuFragmentBinding
-import com.example.androidmasterclass.databinding.RoomMainMenuFragmentBinding
-import com.example.androidmasterclass.main_menu.presentation.adapters.MainMenuAdapter
-import com.example.androidmasterclass.main_menu.presentation.model.DataMainMenu
+import com.example.androidmasterclass.common.presentation.adapters.MainMenuAdapter
+import com.example.androidmasterclass.common.presentation.models.DataMainMenu
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

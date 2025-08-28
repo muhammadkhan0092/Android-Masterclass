@@ -1,6 +1,6 @@
 package com.example.androidmasterclass.modules.room_db.many_to_many.domain.use_case
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.room_db.many_to_many.data.repository.ManyToManyRepository
 import com.example.androidmasterclass.modules.room_db.many_to_many.domain.models.DataCourse
 import com.example.androidmasterclass.modules.room_db.many_to_many.domain.models.DataStudent

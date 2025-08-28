@@ -1,6 +1,6 @@
-package com.example.androidmasterclass.modules.firestore.domain.repository
+package com.example.androidmasterclass.common.firebase.data.repository
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
 import kotlinx.coroutines.flow.Flow
 

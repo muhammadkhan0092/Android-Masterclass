@@ -1,11 +1,10 @@
 package com.example.androidmasterclass.hilt.modules
 
-import com.example.androidmasterclass.FirestoreRepo
-import com.example.androidmasterclass.RealtimeRepo
+import com.example.androidmasterclass.common.firebase.data.di.FirestoreRepo
+import com.example.androidmasterclass.common.firebase.data.di.RealtimeRepo
 import com.example.androidmasterclass.modules.firebase_realtime.data.repository.FirebaseUserRepository
 import com.example.androidmasterclass.modules.firestore.data.repository.FireStoreUserRepository
-import com.example.androidmasterclass.modules.firestore.domain.repository.UserRepository
-import com.google.firebase.Firebase
+import com.example.androidmasterclass.common.firebase.data.repository.UserRepository
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module

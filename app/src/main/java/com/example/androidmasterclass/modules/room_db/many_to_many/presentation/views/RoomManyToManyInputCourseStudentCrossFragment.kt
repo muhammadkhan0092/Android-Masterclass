@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.databinding.RoomManyToManyInputCourseStudentCrossFragmentBinding
 import com.example.androidmasterclass.modules.room_db.many_to_many.data.models.DataStudentCourseCross
 import com.example.androidmasterclass.modules.room_db.many_to_many.presentation.view_models.RoomManyToManyViewModel

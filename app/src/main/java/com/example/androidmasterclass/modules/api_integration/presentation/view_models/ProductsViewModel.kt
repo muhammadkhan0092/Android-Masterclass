@@ -2,7 +2,7 @@ package com.example.androidmasterclass.modules.api_integration.presentation.view
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.api_integration.domain.models.Product
 import com.example.androidmasterclass.modules.api_integration.domain.usecase.products.ProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

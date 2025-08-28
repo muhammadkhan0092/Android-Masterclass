@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.R
 import com.example.androidmasterclass.databinding.RoomManyToManyInputCourseAndStudentFragmentBinding
 import com.example.androidmasterclass.modules.room_db.many_to_many.presentation.common.Constants.TYPE_COURSE

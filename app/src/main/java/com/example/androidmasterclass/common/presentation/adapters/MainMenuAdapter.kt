@@ -1,4 +1,4 @@
-package com.example.androidmasterclass.main_menu.presentation.adapters
+package com.example.androidmasterclass.common.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmasterclass.databinding.ItemMainMenuBinding
-import com.example.androidmasterclass.main_menu.presentation.model.DataMainMenu
+import com.example.androidmasterclass.common.presentation.models.DataMainMenu
 
 class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.MainMenuViewHolder>(){
     override fun onCreateViewHolder(
@@ -49,7 +49,7 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.MainMenuViewHolder>
         }
     }
 
-    val differ = AsyncListDiffer(this,diffUtil)
+    val differ = AsyncListDiffer(this, diffUtil)
     var onClick : ((String)-> Unit)? = null
 
     inner class MainMenuViewHolder(val binding: ItemMainMenuBinding) : RecyclerView.ViewHolder(binding.root) {

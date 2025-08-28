@@ -1,6 +1,6 @@
 package com.example.androidmasterclass.modules.api_integration.domain.usecase.products
 
-import com.example.androidlauncher.utils.Resource
+import com.example.androidmasterclass.utils.Resource
 import com.example.androidmasterclass.modules.api_integration.data.repository.ProductRepository
 import com.example.androidmasterclass.modules.api_integration.domain.models.Product
 import javax.inject.Inject

@@ -8,10 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidlauncher.utils.Resource
-import com.example.androidlauncher.utils.VerticalItemDecoration
+import com.example.androidmasterclass.utils.Resource
+import com.example.androidmasterclass.utils.VerticalItemDecoration
 import com.example.androidmasterclass.databinding.FirestoreUpdateFragmentBinding
 import com.example.androidmasterclass.modules.firestore.presentation.adapter.FirestoreUpdateAdapter
 import com.example.androidmasterclass.modules.firestore.presentation.view_models.FirestoreViewModel

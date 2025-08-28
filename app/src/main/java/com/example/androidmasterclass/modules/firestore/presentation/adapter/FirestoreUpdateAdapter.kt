@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmasterclass.databinding.ItemFirestoreUpdateBinding
 import com.example.androidmasterclass.databinding.ItemMainMenuBinding
-import com.example.androidmasterclass.main_menu.presentation.model.DataMainMenu
+import com.example.androidmasterclass.common.presentation.models.DataMainMenu
 import com.example.androidmasterclass.modules.firestore.domain.models.DataUser
 
 class FirestoreUpdateAdapter : RecyclerView.Adapter<FirestoreUpdateAdapter.FirestoreUpdateViewHolder>(){
